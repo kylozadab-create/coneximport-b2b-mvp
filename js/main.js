@@ -2,11 +2,21 @@
 // CONEXIMPORT B2B - JAVASCRIPT FUNCIONALIDAD
 // ============================================
 
+// ===== Inicializar EmailJS =====
+(function() {
+    emailjs.init("E-dTUH_EZVPv2Fsic");
+})();
+
 // ===== Variables Globales =====
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const registroForm = document.getElementById('registro-form');
 const ctaMainBtn = document.getElementById('cta-main');
+
+// Credenciales EmailJS
+const EMAILJS_SERVICE_ID = "service_pad34rk";
+const EMAILJS_TEMPLATE_ID = "template_6cun41o";
+const ADMIN_EMAIL = "u21311906@utp.edu.pe";
 
 // ===== Menú Móvil Toggle =====
 if (menuToggle) {
@@ -60,7 +70,7 @@ if (registroForm) {
             return;
         }
 
-        // Simular envío del formulario
+        // Enviar formulario con EmailJS
         await enviarFormulario(formData);
     });
 }
@@ -71,7 +81,7 @@ function validarEmail(email) {
     return regex.test(email);
 }
 
-// ===== Función para Enviar Formulario =====
+// ===== Función para Enviar Formulario con EmailJS =====
 async function enviarFormulario(datos) {
     try {
         // Mostrar estado de carga
@@ -80,17 +90,27 @@ async function enviarFormulario(datos) {
         btnSubmit.disabled = true;
         btnSubmit.textContent = 'Enviando...';
 
-        // Simular delay de red
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Preparar datos para EmailJS
+        const templateParams = {
+            to_email: ADMIN_EMAIL,
+            from_name: datos.nombre,
+            from_email: datos.email,
+            nombre: datos.nombre,
+            email: datos.email,
+            empresa: datos.empresa,
+            sector: datos.sector,
+            fecha: new Date().toLocaleString('es-ES'),
+            timestamp: datos.timestamp
+        };
 
-        // En un proyecto real, aquí se enviaría a un servidor:
-        // const response = await fetch('/api/registrar', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(datos)
-        // });
+        // Enviar con EmailJS
+        const response = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
 
-        console.log('Datos de registro:', datos);
+        console.log('Email enviado exitosamente:', response);
 
         // Mostrar mensaje de éxito
         mostrarMensaje('¡Registro exitoso! Te contactaremos pronto.', 'success');
@@ -102,11 +122,18 @@ async function enviarFormulario(datos) {
         btnSubmit.disabled = false;
         btnSubmit.textContent = textoOriginal;
 
+        // Rastrear evento
+        rastrearEvento('formulario_enviado_exitosamente', datos);
+
     } catch (error) {
         console.error('Error al enviar formulario:', error);
-        mostrarMensaje('Hubo un error. Por favor intenta de nuevo.', 'error');
+        mostrarMensaje('Hubo un error al registrarse. Por favor intenta de nuevo.', 'error');
         const btnSubmit = registroForm.querySelector('button[type="submit"]');
         btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Registrarme Ahora';
+        
+        // Rastrear error
+        rastrearEvento('formulario_error', { error: error.message });
     }
 }
 
@@ -287,16 +314,6 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
     });
 });
 
-// Rastrear envío de formulario
-if (registroForm) {
-    const formSubmitOriginal = registroForm.onsubmit;
-    registroForm.addEventListener('submit', () => {
-        rastrearEvento('formulario_enviado', {
-            timestamp: new Date().toISOString()
-        });
-    });
-}
-
 // ===== Detectar cambios en viewport =====
 function handleViewportChange() {
     if (window.innerWidth > 768) {
@@ -310,3 +327,4 @@ window.addEventListener('resize', handleViewportChange);
 // ===== Inicialización al cargar =====
 console.log('✅ Coneximport B2B - Landing Page cargada correctamente');
 console.log('Versión: 1.0.0');
+console.log('📧 EmailJS integrado y activo');
