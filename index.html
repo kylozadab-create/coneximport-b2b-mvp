@@ -133,28 +133,28 @@
             <h2>Explora Nuestros Productos</h2>
             <div class="categorias-grid">
                 <!-- Decoración -->
-                <div class="categoria-card">
+                <div class="categoria-card" onclick="abrirModal('decoracion')" style="cursor: pointer;">
                     <div class="categoria-icon">🎨</div>
                     <h3>Decoración</h3>
                     <p>Artículos decorativos, cuadros, plantas, espejos y adornos para hogar</p>
                 </div>
 
                 <!-- Organizadores -->
-                <div class="categoria-card">
+                <div class="categoria-card" onclick="abrirModal('organizadores')" style="cursor: pointer;">
                     <div class="categoria-icon">📦</div>
                     <h3>Organizadores</h3>
                     <p>Cajas, estantes, armarios y soluciones de almacenamiento inteligente</p>
                 </div>
 
                 <!-- Almacenamiento -->
-                <div class="categoria-card">
+                <div class="categoria-card" onclick="abrirModal('almacenamiento')" style="cursor: pointer;">
                     <div class="categoria-icon">🏠</div>
                     <h3>Almacenamiento</h3>
                     <p>Muebles de almacenamiento, contenedores y sistemas de organización</p>
                 </div>
 
                 <!-- Accesorios de Uso Cotidiano -->
-                <div class="categoria-card">
+                <div class="categoria-card" onclick="abrirModal('accesorios')" style="cursor: pointer;">
                     <div class="categoria-icon">✨</div>
                     <h3>Accesorios Cotidianos</h3>
                     <p>Artículos de uso diario: iluminación, textiles, utensilios y más</p>
@@ -269,6 +269,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- VENTANA EMERGENTE (MODAL) PARA MOSTRAR PRODUCTOS -->
+    <div id="modal-productos" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; padding: 20px;">
+        <div style="background-color: #ffffff; padding: 30px; border-radius: 12px; width: 100%; max-width: 850px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0px 10px 30px rgba(0,0,0,0.3); font-family: sans-serif;">
+            <span onclick="cerrarModal()" style="position: absolute; top: 15px; right: 20px; font-size: 32px; font-weight: bold; color: #666; cursor: pointer;">&times;</span>
+            <h2 id="modal-titulo-categoria" style="color: #0052CC; margin-top: 0; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 10px;">Categoría</h2>
+            <div id="contenedor-lista-productos" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+                <!-- JavaScript inyectará los productos aquí -->
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
