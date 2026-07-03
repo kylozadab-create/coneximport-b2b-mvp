@@ -4,7 +4,8 @@
 
 // ===== Inicializar EmailJS =====
 (function() {
-    emailjs.init("E-dTUH_EZVPv2Fsic");
+    // REEMPLAZA EL TEXTO DE ABAJO CON TU PUBLIC KEY REAL DE EMAILJS
+    emailjs.init("TU_PUBLIC_KEY_AQUÍ");
 })();
 
 // ===== Variables Globales =====
@@ -14,8 +15,9 @@ const registroForm = document.getElementById('registro-form');
 const ctaMainBtn = document.getElementById('cta-main');
 
 // Credenciales EmailJS
-const EMAILJS_SERVICE_ID = "service_pad34rk";
-const EMAILJS_TEMPLATE_ID = "template_6cun41o";
+// REEMPLAZA ESTOS DOS VALORES CON TUS CREDENCIALES REALES
+const EMAILJS_SERVICE_ID = "TU_SERVICE_ID_AQUÍ";
+const EMAILJS_TEMPLATE_ID = "TU_TEMPLATE_ID_AQUÍ";
 const ADMIN_EMAIL = "u21311906@utp.edu.pe";
 
 // ===== Base de Datos de Productos (Modal B2B) =====
