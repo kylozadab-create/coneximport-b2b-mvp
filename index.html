@@ -127,35 +127,35 @@
         </div>
     </section>
 
-<!-- Categorías Section -->
+    <!-- Categorías Section -->
     <section id="categorias" class="categorias">
         <div class="container">
             <h2>Explora Nuestros Productos</h2>
             <div class="categorias-grid">
                 
                 <!-- Decoración -->
-                <div class="categoria-card" data-id="decoracion" style="cursor: pointer;">
+                <div class="categoria-card" data-id="decoracion" onclick="abrirModal('decoracion')" style="cursor: pointer;">
                     <div class="categoria-icon">🎨</div>
                     <h3>Decoración</h3>
                     <p>Artículos decorativos, cuadros, plantas, espejos y adornos para hogar</p>
                 </div>
 
                 <!-- Organizadores -->
-                <div class="categoria-card" data-id="organizadores" style="cursor: pointer;">
+                <div class="categoria-card" data-id="organizadores" onclick="abrirModal('organizadores')" style="cursor: pointer;">
                     <div class="categoria-icon">📦</div>
                     <h3>Organizadores</h3>
                     <p>Cajas, estantes, armarios y soluciones de almacenamiento inteligente</p>
                 </div>
 
                 <!-- Almacenamiento -->
-                <div class="categoria-card" data-id="almacenamiento" style="cursor: pointer;">
+                <div class="categoria-card" data-id="almacenamiento" onclick="abrirModal('almacenamiento')" style="cursor: pointer;">
                     <div class="categoria-icon">🏠</div>
                     <h3>Almacenamiento</h3>
                     <p>Muebles de almacenamiento, contenedores y sistemas de organización</p>
                 </div>
 
                 <!-- Accesorios de Uso Cotidiano -->
-                <div class="categoria-card" data-id="accesorios" style="cursor: pointer;">
+                <div class="categoria-card" data-id="accesorios" onclick="abrirModal('accesorios')" style="cursor: pointer;">
                     <div class="categoria-icon">✨</div>
                     <h3>Accesorios Cotidianos</h3>
                     <p>Artículos de uso diario: iluminación, textiles, utensilios y más</p>
@@ -280,8 +280,9 @@
                 <!-- JavaScript inyectará los productos aquí -->
             </div>
         </div>
-    </div>
+    </div> <!-- <--- AQUÍ SE CERRÓ EL MODAL CORRECTAMENTE -->
 
-    <script src="js/main.js"></script>
+    <!-- VINCULACIÓN DEL ARCHIVO JAVASCRIPT -->
+    <script src="js/main.js"></script> 
 </body>
 </html>
