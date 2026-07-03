@@ -128,6 +128,31 @@ function cerrarModal() {
     const modal = document.getElementById("modal-productos");
     if (modal) modal.style.display = "none";
 }
+// ===== Asegurar el correcto funcionamiento de los clics en las Categorías =====
+document.addEventListener("DOMContentLoaded", function() {
+    const tarjetas = document.querySelectorAll('.categoria-card');
+    
+    tarjetas.forEach(tarjeta => {
+        tarjeta.style.cursor = "pointer";
+        
+        tarjeta.addEventListener('click', function(e) {
+            e.preventDefault();
+            const categoriaId = this.getAttribute('data-id') || this.id;
+            
+            if (categoriaId) {
+                console.log("Abriendo categoría de forma directa:", categoriaId);
+                abrirModal(categoriaId);
+            } else {
+                const textoTitulo = this.querySelector('h3')?.innerText.toLowerCase();
+                if (textoTitulo?.includes('deco')) abrirModal('decoracion');
+                if (textoTitulo?.includes('organi')) abrirModal('organizadores');
+                if (textoTitulo?.includes('alma')) abrirModal('almacenamiento');
+                if (textoTitulo?.includes('acce')) abrirModal('accesorios');
+            }
+        });
+    });
+});
+
 
 // ===== Menú Móvil Toggle =====
 if (menuToggle) {
