@@ -128,31 +128,6 @@ function cerrarModal() {
     const modal = document.getElementById("modal-productos");
     if (modal) modal.style.display = "none";
 }
-// ===== Asegurar el correcto funcionamiento de los clics en las Categorías =====
-document.addEventListener("DOMContentLoaded", function() {
-    const tarjetas = document.querySelectorAll('.categoria-card');
-    
-    tarjetas.forEach(tarjeta => {
-        tarjeta.style.cursor = "pointer";
-        
-        tarjeta.addEventListener('click', function(e) {
-            e.preventDefault();
-            const categoriaId = this.getAttribute('data-id') || this.id;
-            
-            if (categoriaId) {
-                console.log("Abriendo categoría de forma directa:", categoriaId);
-                abrirModal(categoriaId);
-            } else {
-                const textoTitulo = this.querySelector('h3')?.innerText.toLowerCase();
-                if (textoTitulo?.includes('deco')) abrirModal('decoracion');
-                if (textoTitulo?.includes('organi')) abrirModal('organizadores');
-                if (textoTitulo?.includes('alma')) abrirModal('almacenamiento');
-                if (textoTitulo?.includes('acce')) abrirModal('accesorios');
-            }
-        });
-    });
-});
-
 
 // ===== Menú Móvil Toggle =====
 if (menuToggle) {
@@ -171,4 +146,235 @@ if (menuToggle) {
 
 // ===== Validación y Envío del Formulario =====
 if (registroForm) {
-    registroForm.
+    registroForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            nombre: document.getElementById('nombre').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            empresa: document.getElementById('empresa').value.trim(),
+            sector: document.getElementById('sector').value,
+            timestamp: new Date().toISOString(),
+            acceptedTerms: document.getElementById('terminos').checked
+        };
+
+        if (formData.nombre.length < 3) {
+            mostrarMensaje('Por favor ingresa un nombre válido (mínimo 3 caracteres)', 'error');
+            return;
+        }
+
+        if (!validarEmail(formData.email)) {
+            mostrarMensaje('Por favor ingresa un email válido', 'error');
+            return;
+        }
+
+        if (formData.empresa.length < 3) {
+            mostrarMensaje('Por favor ingresa el nombre de tu empresa (mínimo 3 caracteres)', 'error');
+            return;
+        }
+
+        if (!formData.acceptedTerms) {
+            mostrarMensaje('Debes aceptar los términos y condiciones', 'error');
+            return;
+        }
+
+        await enviarFormulario(formData);
+    });
+}
+
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+async function enviarFormulario(datos) {
+    try {
+        const btnSubmit = registroForm.querySelector('button[type="submit"]');
+        const textoOriginal = btnSubmit.textContent;
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Enviando...';
+
+        const templateParams = {
+            to_email: ADMIN_EMAIL,
+            from_name: datos.nombre,
+            from_email: datos.email,
+            nombre: datos.nombre,
+            email: datos.email,
+            empresa: datos.empresa,
+            sector: datos.sector,
+            fecha: new Date().toLocaleString('es-ES'),
+            timestamp: datos.timestamp
+        };
+
+        const response = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
+
+        console.log('Email enviado exitosamente:', response);
+        mostrarMensaje('¡Registro exitoso! Te contactaremos pronto.', 'success');
+        registroForm.reset();
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = textoOriginal;
+
+        rastrearEvento('formulario_enviado_exitosamente', datos);
+
+    } catch (error) {
+        console.error('Error al enviar formulario:', error);
+        mostrarMensaje('Hubo un error al registrarse. Por favor intenta de nuevo.', 'error');
+        const btnSubmit = registroForm.querySelector('button[type="submit"]');
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Registrarme Ahora';
+        rastrearEvento('formulario_error', { error: error.message });
+    }
+}
+
+function mostrarMensaje(mensaje, tipo = 'info') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `mensaje mensaje-${tipo}`;
+    messageDiv.textContent = mensaje;
+    messageDiv.style.cssText = `
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+        text-align: center;
+    `;
+
+    if (tipo === 'success') {
+        messageDiv.style.backgroundColor = '#dcfce7';
+        messageDiv.style.color = '#166534';
+        messageDiv.style.borderLeft = '4px solid #22c55e';
+    } else if (tipo === 'error') {
+        messageDiv.style.backgroundColor = '#fee2e2';
+        messageDiv.style.color = '#991b1b';
+        messageDiv.style.borderLeft = '4px solid #ef4444';
+    } else {
+        messageDiv.style.backgroundColor = '#dbeafe';
+        messageDiv.style.color = '#1e40af';
+        messageDiv.style.borderLeft = '4px solid #1e40af';
+    }
+
+    registroForm.parentNode.insertBefore(messageDiv, registroForm);
+
+    setTimeout(() => {
+        messageDiv.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => messageDiv.remove(), 300);
+    }, 5000);
+}
+
+// ===== Animación Smooth Scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            const element = document.querySelector(href);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+
+// ===== Botón CTA Principal =====
+if (ctaMainBtn) {
+    ctaMainBtn.addEventListener('click', () => {
+        const contactoSection = document.getElementById('contacto');
+        if (contactoSection) {
+            contactoSection.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('nombre').focus();
+        }
+    });
+}
+
+// ===== Animación de Scroll para Elementos =====
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.beneficio-card, .categoria-card, .confianza-item').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+
+// ===== Agregar estilos de animación =====
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+    .btn { position: relative; overflow: hidden; }
+    .btn::before {
+        content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+        border-radius: 50%; background: rgba(255, 255, 255, 0.3); transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    .btn:active::before { width: 300px; height: 300px; }
+`;
+document.head.appendChild(style);
+
+// ===== Scroll de Categorías Móvil =====
+const categoriasGrid = document.querySelector('.categorias-grid');
+if (categoriasGrid && window.innerWidth < 768) {
+    categoriasGrid.style.overflowX = 'auto';
+    categoriasGrid.style.scrollBehavior = 'smooth';
+}
+
+// ===== Eventos Globales (Scroll & Click Outside) =====
+window.addEventListener('scroll', () => {
+    if (navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        if (menuToggle) menuToggle.textContent = '☰';
+    }
+}, false);
+
+window.onclick = function(event) {
+    const modal = document.getElementById("modal-productos");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// ===== Función para rastrear eventos =====
+function rastrearEvento(nombre, datos = {}) {
+    console.log(`Evento: ${nombre}`, datos);
+}
+
+document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', () => {
+        rastrearEvento('cta_click', { 
+            boton: btn.textContent,
+            timestamp: new Date().toISOString()
+        });
+    });
+});
+
+function handleViewportChange() {
+    if (window.innerWidth > 768) {
+        navMenu?.classList.remove('active');
+        if (menuToggle) menuToggle.textContent = '☰';
+    }
+}
+window.addEventListener('resize', handleViewportChange);
+
+// ===== Inicialización de Consola =====
+console.log('✅ Coneximport B2B - Landing Page cargada correctamente');
+console.log('Versión: 1.2.0 (Modals corregidos y unificados sin errores)');
+console.log('📧 EmailJS integrado y activo');
