@@ -20,7 +20,7 @@ const ADMIN_EMAIL = "kylozadab@gmail.com";
 
 // ===== Base de Datos de Productos (Modal B2B) =====
 const productosPorCategoria = {
-    decoracion: [
+decoracion: [
         { 
             nombre: "Espejo Minimalista con Marco de Madera", 
             precio: "S/. 38.00", 
@@ -32,6 +32,18 @@ const productosPorCategoria = {
             precio: "S/. 22.50", 
             moq: "Pedido mín: 15 sets", 
             img: "https://picsum.photos/id/1062/400/300" 
+        },
+        { 
+            nombre: "Cuadros Decorativos Abstractos (Canvas)", 
+            precio: "S/. 15.00", 
+            moq: "Pedido mín: 20 und.", 
+            img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&q=80" 
+        },
+        { 
+            nombre: "Lámpara de Mesa Vintage Industrial", 
+            precio: "S/. 29.90", 
+            moq: "Pedido mín: 12 und.", 
+            img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" 
         }
     ],
     organizadores: [
