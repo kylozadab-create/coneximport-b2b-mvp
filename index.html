@@ -1,288 +1,376 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Coneximport B2B - Plataforma digital que conecta MYPES con proveedores confiables. Acceso a lotes mínimos, seguridad en transacciones y optimización logística.">
-    <meta name="keywords" content="MYPES, B2B, importación, proveedores, comercio electrónico, productos de hogar, decoración">
-    <meta name="author" content="Coneximport">
-    <title>Coneximport B2B - Conecta tu MYPE con Proveedores Confiables</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- EmailJS Library -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <h1>Coneximport</h1>
-                    <span class="tagline">B2B MYPES</span>
+// ============================================
+// CONEXIMPORT B2B - JAVASCRIPT FUNCIONALIDAD
+// ============================================
+
+// ===== Inicializar EmailJS =====
+(function() {
+    // Inicializado con tu Public Key real detectada en tu cuenta
+    emailjs.init("E-dTUH_EZVPv2Fsic");
+})();
+
+// ===== Variables Globales =====
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const registroForm = document.getElementById('registro-form');
+const ctaMainBtn = document.getElementById('cta-main');
+
+// Credenciales EmailJS
+// Configurado con tus identificadores reales de cuenta y plantilla
+const EMAILJS_SERVICE_ID = "service_pad34rk";
+const EMAILJS_TEMPLATE_ID = "template_6cun41o";
+const ADMIN_EMAIL = "u21311906@utp.edu.pe";
+
+// ===== Base de Datos de Productos (Modal B2B) =====
+const productosPorCategoria = {
+    decoracion: [
+        { 
+            nombre: "Espejo Minimalista con Marco de Madera", 
+            precio: "S/. 38.00", 
+            moq: "Pedido mín: 10 und.", 
+            img: "https://picsum.photos/id/20/400/300" 
+        },
+        { 
+            nombre: "Set x3 Macetas de Cerámica Nórdica", 
+            precio: "S/. 22.50", 
+            moq: "Pedido mín: 15 sets", 
+            img: "https://picsum.photos/id/1062/400/300" 
+        }
+    ],
+    organizadores: [
+        { 
+            nombre: "Organizador Giratorio para Condimentos (360°)", 
+            precio: "S/. 14.50", 
+            moq: "Pedido mín: 20 und.", 
+            img: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=400&q=80" 
+        },
+        { 
+            nombre: "Organizador Ajustable para Lavaplatos y Fregadero", 
+            precio: "S/. 9.80", 
+            moq: "Pedido mín: 30 und.", 
+            img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" 
+        }
+    ],
+    almacenamiento: [
+        { 
+            nombre: "Cajones de Plástico Organizadores para Cocina (4 Niveles)", 
+            precio: "S/. 42.00", 
+            moq: "Pedido mín: 8 und.", 
+            img: "https://images.unsplash.com/photo-1595341595378-fc02e1b12b2a?w=400&q=80" 
+        },
+        { 
+            nombre: "Contenedores Herméticos para Alimentos Secos x6", 
+            precio: "S/. 24.50", 
+            moq: "Pedido mín: 12 sets", 
+            img: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=400&q=80" 
+        }
+    ],
+    accesorios: [
+        { 
+            nombre: "Lámpara de Escritorio LED Inteligente", 
+            precio: "S/. 26.00", 
+            moq: "Pedido mín: 20 und.", 
+            img: "https://picsum.photos/id/201/400/300" 
+        },
+        { 
+            nombre: "Set de Utensilios de Cocina de Bambú x5", 
+            precio: "S/. 14.00", 
+            moq: "Pedido mín: 25 sets", 
+            img: "https://picsum.photos/id/292/400/300" 
+        }
+    ]
+};
+
+// ===== Funciones para Controlar el Modal de Productos =====
+function abrirModal(categoria) {
+    const modal = document.getElementById("modal-productos");
+    const titulo = document.getElementById("modal-titulo-categoria");
+    const contenedor = document.getElementById("contenedor-lista-productos");
+
+    const nombresCategorias = {
+        decoracion: "Decoración para el Hogar",
+        organizadores: "Organización Eficiente",
+        almacenamiento: "Sistemas de Almacenamiento",
+        accesorios: "Accesorios de Uso Cotidiano"
+    };
+
+    if (titulo) titulo.innerText = nombresCategorias[categoria] || "Productos Disponibles";
+    if (contenedor) contenedor.innerHTML = ""; 
+
+    if (productosPorCategoria[categoria] && contenedor) {
+        productosPorCategoria[categoria].forEach(prod => {
+            const mensajeWhatsApp = `Hola Coneximport, estoy interesado en importar el producto B2B: "${prod.nombre}". Deseo más información sobre precios por mayor y plazos de entrega de logística.`;
+            const urlWhatsApp = `https://wa.me/51972185119?text=${encodeURIComponent(mensajeWhatsApp)}`;
+
+            const tarjetaHtml = `
+                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 15px; text-align: center; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+                    <img src="${prod.img}" alt="${prod.nombre}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; margin-bottom: 12px;">
+                    <h4 style="font-size: 16px; color: #333; margin: 0 0 8px 0; font-weight: 600; font-family: sans-serif;">${prod.nombre}</h4>
+                    <p style="font-size: 18px; color: #0052CC; font-weight: bold; margin: 0 0 4px 0; font-family: sans-serif;">${prod.precio}</p>
+                    <p style="font-size: 13px; color: #666; margin: 0 0 15px 0; font-style: italic; font-family: sans-serif;">${prod.moq}</p>
+                    <a href="${urlWhatsApp}" target="_blank" style="display: block; background-color: #25D366; color: white; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 14px; font-family: sans-serif; transition: background-color 0.2s;">
+                        🟢 Adquirir Lote
+                    </a>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#beneficios">Beneficios</a></li>
-                    <li><a href="#como-funciona">¿Cómo Funciona?</a></li>
-                    <li><a href="#categorias">Categorías</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-                <button class="menu-toggle">☰</button>
-            </div>
-        </div>
-    </nav>
+            `;
+            contenedor.innerHTML += tarjetaHtml;
+        });
+    }
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Conecta tu MYPE con Proveedores de Confianza</h1>
-                <p class="hero-subtitle">Acceso a lotes mínimos, seguridad garantizada y trámites simplificados. Todo en una plataforma digital innovadora.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" id="cta-main">Registrar mi MYPE</button>
-                    <button class="btn btn-secondary">Ver Demo</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    if (modal) modal.style.display = "flex";
+    rastrearEvento('modal_abierto', { categoria: categoria });
+}
 
-    <!-- Beneficios Section -->
-    <section id="beneficios" class="beneficios">
-        <div class="container">
-            <h2>El Problema que Resolvemos</h2>
-            <div class="beneficios-grid">
-                <!-- Beneficio 1 -->
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">📦</div>
-                    <h3>Lotes Mínimos Altos</h3>
-                    <p class="problema">❌ Compras forzadas de grandes cantidades que agotan tu capital</p>
-                    <p class="solucion">✅ Acceso a proveedores con MOQ flexible y negociable</p>
-                </div>
+function cerrarModal() {
+    const modal = document.getElementById("modal-productos");
+    if (modal) modal.style.display = "none";
+}
 
-                <!-- Beneficio 2 -->
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">🔐</div>
-                    <h3>Riesgo con Proveedores</h3>
-                    <p class="problema">❌ Incertidumbre al trabajar con proveedores desconocidos o no verificados</p>
-                    <p class="solucion">✅ Proveedores verificados con garantía de seguridad y trazabilidad</p>
-                </div>
+// ===== Menú Móvil Toggle =====
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
 
-                <!-- Beneficio 3 -->
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">📋</div>
-                    <h3>Trámites Complejos</h3>
-                    <p class="problema">❌ Procesos burocráticos largos y confusos que retrasan operaciones</p>
-                    <p class="solucion">✅ Gestión de trámites automatizada y simplificada en una plataforma</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.textContent = '☰';
+        });
+    });
+}
 
-    <!-- Cómo Funciona Section -->
-    <section id="como-funciona" class="como-funciona">
-        <div class="container">
-            <h2>¿Cómo Funciona en 4 Pasos?</h2>
-            <div class="timeline">
-                <!-- Paso 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-number">1</div>
-                    <div class="timeline-content">
-                        <h3>Registro Rápido</h3>
-                        <p>Crea tu perfil de MYPE en menos de 5 minutos. Verifica tu identidad y accede a la plataforma.</p>
-                        <span class="timeline-badge">Registro</span>
-                    </div>
-                </div>
+// ===== Validación y Envío del Formulario =====
+if (registroForm) {
+    registroForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-                <!-- Paso 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-number">2</div>
-                    <div class="timeline-content">
-                        <h3>Explora y Cotiza</h3>
-                        <p>Navega por proveedores verificados, compara precios y solicita cotizaciones personalizadas.</p>
-                        <span class="timeline-badge">Cotización</span>
-                    </div>
-                </div>
+        const formData = {
+            nombre: document.getElementById('nombre').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            empresa: document.getElementById('empresa').value.trim(),
+            sector: document.getElementById('sector').value,
+            timestamp: new Date().toISOString(),
+            acceptedTerms: document.getElementById('terminos').checked
+        };
 
-                <!-- Paso 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-number">3</div>
-                    <div class="timeline-content">
-                        <h3>Negocia y Conecta</h3>
-                        <p>Comunícate directamente con proveedores, negocia términos y cierra acuerdos seguros.</p>
-                        <span class="timeline-badge">Conexión</span>
-                    </div>
-                </div>
+        if (formData.nombre.length < 3) {
+            mostrarMensaje('Por favor ingresa un nombre válido (mínimo 3 caracteres)', 'error');
+            return;
+        }
 
-                <!-- Paso 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-number">4</div>
-                    <div class="timeline-content">
-                        <h3>Pago Seguro y Entrega</h3>
-                        <p>Realiza pagos seguros con múltiples pasarelas. Recibe seguimiento de tu mercancía en tiempo real.</p>
-                        <span class="timeline-badge">Entrega</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        if (!validarEmail(formData.email)) {
+            mostrarMensaje('Por favor ingresa un email válido', 'error');
+            return;
+        }
 
-    <!-- Categorías Section -->
-    <section id="categorias" class="categorias">
-        <div class="container">
-            <h2>Explora Nuestros Productos</h2>
-            <div class="categorias-grid">
-                
-                <!-- Decoración -->
-                <div class="categoria-card" data-id="decoracion" onclick="abrirModal('decoracion')" style="cursor: pointer;">
-                    <div class="categoria-icon">🎨</div>
-                    <h3>Decoración</h3>
-                    <p>Artículos decorativos, cuadros, plantas, espejos y adornos para hogar</p>
-                </div>
+        if (formData.empresa.length < 3) {
+            mostrarMensaje('Por favor ingresa el nombre de tu empresa (mínimo 3 caracteres)', 'error');
+            return;
+        }
 
-                <!-- Organizadores -->
-                <div class="categoria-card" data-id="organizadores" onclick="abrirModal('organizadores')" style="cursor: pointer;">
-                    <div class="categoria-icon">📦</div>
-                    <h3>Organizadores</h3>
-                    <p>Cajas, estantes, armarios y soluciones de almacenamiento inteligente</p>
-                </div>
+        if (!formData.acceptedTerms) {
+            mostrarMensaje('Debes aceptar los términos y condiciones', 'error');
+            return;
+        }
 
-                <!-- Almacenamiento -->
-                <div class="categoria-card" data-id="almacenamiento" onclick="abrirModal('almacenamiento')" style="cursor: pointer;">
-                    <div class="categoria-icon">🏠</div>
-                    <h3>Almacenamiento</h3>
-                    <p>Muebles de almacenamiento, contenedores y sistemas de organización</p>
-                </div>
+        await enviarFormulario(formData);
+    });
+}
 
-                <!-- Accesorios de Uso Cotidiano -->
-                <div class="categoria-card" data-id="accesorios" onclick="abrirModal('accesorios')" style="cursor: pointer;">
-                    <div class="categoria-icon">✨</div>
-                    <h3>Accesorios Cotidianos</h3>
-                    <p>Artículos de uso diario: iluminación, textiles, utensilios y más</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Confianza Section -->
-    <section id="confianza" class="confianza">
-        <div class="container">
-            <h2>Tu Seguridad es Nuestra Prioridad</h2>
-            <div class="confianza-grid">
-                <div class="confianza-item">
-                    <h3>✓ Proveedores Verificados</h3>
-                    <p>Todos nuestros proveedores son validados y cuentan con certificaciones internacionales.</p>
-                </div>
-                <div class="confianza-item">
-                    <h3>✓ Transacciones Seguras</h3>
-                    <p>Pagos encriptados con Stripe, PayPal y MercadoPago. Garantía de comprador incluida.</p>
-                </div>
-                <div class="confianza-item">
-                    <h3>✓ Soporte 24/7</h3>
-                    <p>Equipo dedicado para resolver dudas y conflictos en tiempo real.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
 
-    <!-- Registro / Lista de Espera Section -->
-    <section id="contacto" class="registro">
-        <div class="container">
-            <div class="registro-content">
-                <h2>¡Únete a la Revolución B2B!</h2>
-                <p>Sé de los primeros en acceder a Coneximport. Regístrate ahora y recibe una consulta gratuita.</p>
-                
-                <form id="registro-form" class="registro-form">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                    </div>
+async function enviarFormulario(datos) {
+    try {
+        const btnSubmit = registroForm.querySelector('button[type="submit"]');
+        const textoOriginal = btnSubmit.textContent;
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Enviando...';
 
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                    </div>
+        const templateParams = {
+            to_email: ADMIN_EMAIL,
+            from_name: datos.nombre,
+            from_email: datos.email,
+            nombre: datos.nombre,
+            email: datos.email,
+            empresa: datos.empresa,
+            sector: datos.sector,
+            fecha: new Date().toLocaleString('es-ES'),
+            timestamp: datos.timestamp
+        };
 
-                    <div class="form-group">
-                        <label for="empresa">Nombre de tu MYPE</label>
-                        <input type="text" id="empresa" name="empresa" placeholder="Tu empresa" required>
-                    </div>
+        const response = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
 
-                    <div class="form-group">
-                        <label for="sector">Sector de Interés</label>
-                        <select id="sector" name="sector" required>
-                            <option value="">Selecciona una categoría</option>
-                            <option value="decoracion">Decoración</option>
-                            <option value="organizadores">Organizadores</option>
-                            <option value="almacenamiento">Almacenamiento</option>
-                            <option value="accesorios">Accesorios de Uso Cotidiano</option>
-                        </select>
-                    </div>
+        console.log('Email enviado exitosamente:', response);
+        mostrarMensaje('¡Registro exitoso! Te contactaremos pronto.', 'success');
+        registroForm.reset();
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = textoOriginal;
 
-                    <div class="form-group checkbox">
-                        <input type="checkbox" id="terminos" name="terminos" required>
-                        <label for="terminos">Acepto los términos y condiciones</label>
-                    </div>
+        rastrearEvento('formulario_enviado_exitosamente', datos);
 
-                    <button type="submit" class="btn btn-primary btn-block">Registrarme Ahora</button>
-                </form>
+    } catch (error) {
+        console.error('Error al enviar formulario:', error);
+        mostrarMensaje('Hubo un error al registrarse. Por favor intenta de nuevo.', 'error');
+        const btnSubmit = registroForm.querySelector('button[type="submit"]');
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Registrarme Ahora';
+        rastrearEvento('formulario_error', { error: error.message });
+    }
+}
 
-                <p class="form-footer">Nos protege la más alta seguridad de datos. Tu información nunca será compartida.</p>
-            </div>
-        </div>
-    </section>
+function mostrarMensaje(mensaje, tipo = 'info') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `mensaje mensaje-${tipo}`;
+    messageDiv.textContent = mensaje;
+    messageDiv.style.cssText = `
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+        text-align: center;
+    `;
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Coneximport</h4>
-                    <p>Conectando MYPES con oportunidades globales.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="#beneficios">Beneficios</a></li>
-                        <li><a href="#como-funciona">Cómo Funciona</a></li>
-                        <li><a href="#categorias">Categorías</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Términos de Servicio</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Coneximport B2B. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    if (tipo === 'success') {
+        messageDiv.style.backgroundColor = '#dcfce7';
+        messageDiv.style.color = '#166534';
+        messageDiv.style.borderLeft = '4px solid #22c55e';
+    } else if (tipo === 'error') {
+        messageDiv.style.backgroundColor = '#fee2e2';
+        messageDiv.style.color = '#991b1b';
+        messageDiv.style.borderLeft = '4px solid #ef4444';
+    } else {
+        messageDiv.style.backgroundColor = '#dbeafe';
+        messageDiv.style.color = '#1e40af';
+        messageDiv.style.borderLeft = '4px solid #1e40af';
+    }
 
-    <!-- VENTANA EMERGENTE (MODAL) PARA MOSTRAR PRODUCTOS -->
-    <div id="modal-productos" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; padding: 20px;">
-        <div style="background-color: #ffffff; padding: 30px; border-radius: 12px; width: 100%; max-width: 850px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0px 10px 30px rgba(0,0,0,0.3); font-family: sans-serif;">
-            <span onclick="cerrarModal()" style="position: absolute; top: 15px; right: 20px; font-size: 32px; font-weight: bold; color: #666; cursor: pointer;">&times;</span>
-            <h2 id="modal-titulo-categoria" style="color: #0052CC; margin-top: 0; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 10px;">Categoría</h2>
-            <div id="contenedor-lista-productos" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
-                <!-- JavaScript inyectará los productos aquí -->
-            </div>
-        </div>
-    </div> <!-- <--- AQUÍ SE CERRÓ EL MODAL CORRECTAMENTE -->
+    registroForm.parentNode.insertBefore(messageDiv, registroForm);
 
-    <!-- VINCULACIÓN DEL ARCHIVO JAVASCRIPT -->
-<script src="js/main.js?v=2"></script>
-</body>
-</html>
+    setTimeout(() => {
+        messageDiv.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => messageDiv.remove(), 300);
+    }, 5000);
+}
+
+// ===== Animación Smooth Scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            const element = document.querySelector(href);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+
+// ===== Botón CTA Principal =====
+if (ctaMainBtn) {
+    ctaMainBtn.addEventListener('click', () => {
+        const contactoSection = document.getElementById('contacto');
+        if (contactoSection) {
+            contactoSection.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('nombre').focus();
+        }
+    });
+}
+
+// ===== Animación de Scroll para Elementos =====
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.beneficio-card, .categoria-card, .confianza-item').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+
+// ===== Agregar estilos de animación =====
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+    .btn { position: relative; overflow: hidden; }
+    .btn::before {
+        content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+        border-radius: 50%; background: rgba(255, 255, 255, 0.3); transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    .btn:active::before { width: 300px; height: 300px; }
+`;
+document.head.appendChild(style);
+
+// ===== Scroll de Categorías Móvil =====
+const categoriasGrid = document.querySelector('.categorias-grid');
+if (categoriasGrid && window.innerWidth < 768) {
+    categoriasGrid.style.overflowX = 'auto';
+    categoriasGrid.style.scrollBehavior = 'smooth';
+}
+
+// ===== Eventos Globales (Scroll & Click Outside) =====
+window.addEventListener('scroll', () => {
+    if (navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        if (menuToggle) menuToggle.textContent = '☰';
+    }
+}, false);
+
+window.onclick = function(event) {
+    const modal = document.getElementById("modal-productos");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// ===== Función para rastrear eventos =====
+function rastrearEvento(nombre, datos = {}) {
+    console.log(`Evento: ${nombre}`, datos);
+}
+
+document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', () => {
+        rastrearEvento('cta_click', { 
+            boton: btn.textContent,
+            timestamp: new Date().toISOString()
+        });
+    });
+});
+
+function handleViewportChange() {
+    if (window.innerWidth > 768) {
+        navMenu?.classList.remove('active');
+        if (menuToggle) menuToggle.textContent = '☰';
+    }
+}
+window.addEventListener('resize', handleViewportChange);
+
+// ===== Inicialización de Consola =====
+console.log('✅ Coneximport B2B - Landing Page cargada correctamente');
+console.log('Versión: 1.2.5 (Credenciales de producción enlazadas con EmailJS)');
+console.log('📧 EmailJS integrado y activo');
