@@ -4,8 +4,7 @@
 
 // ===== Inicializar EmailJS =====
 (function() {
-    // REEMPLAZA EL TEXTO DE ABAJO CON TU PUBLIC KEY REAL DE EMAILJS
-    emailjs.init("TU_PUBLIC_KEY_AQUÍ");
+    emailjs.init("E-dTUH_EZVPv2Fsic");
 })();
 
 // ===== Variables Globales =====
@@ -15,10 +14,9 @@ const registroForm = document.getElementById('registro-form');
 const ctaMainBtn = document.getElementById('cta-main');
 
 // Credenciales EmailJS
-// REEMPLAZA ESTOS DOS VALORES CON TUS CREDENCIALES REALES
-const EMAILJS_SERVICE_ID = "TU_SERVICE_ID_AQUÍ";
-const EMAILJS_TEMPLATE_ID = "TU_TEMPLATE_ID_AQUÍ";
-const ADMIN_EMAIL = "u21311906@utp.edu.pe";
+const EMAILJS_SERVICE_ID = "service_pad34rk";
+const EMAILJS_TEMPLATE_ID = "template_6cun41o";
+const ADMIN_EMAIL = "kylozadab@gmail.com";
 
 // ===== Base de Datos de Productos (Modal B2B) =====
 const productosPorCategoria = {
@@ -372,5 +370,5 @@ window.addEventListener('resize', handleViewportChange);
 
 // ===== Inicialización de Consola =====
 console.log('✅ Coneximport B2B - Landing Page cargada correctamente');
-console.log('Versión: 1.2.0 (Modals corregidos y unificados sin errores)');
+console.log('Versión: 1.3.0 (Destino cambiado a kylozadab@gmail.com)');
 console.log('📧 EmailJS integrado y activo');
