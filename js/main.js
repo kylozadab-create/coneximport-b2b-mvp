@@ -25,46 +25,40 @@ const productosPorCategoria = {
             nombre: "Espejo Minimalista con Marco de Madera", 
             precio: "S/. 38.00", 
             moq: "Pedido mín: 10 und.", 
-            img: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&q=80" 
+            img: "https://picsum.photos/id/20/400/300" 
         },
         { 
             nombre: "Set x3 Macetas de Cerámica Nórdica", 
             precio: "S/. 22.50", 
             moq: "Pedido mín: 15 sets", 
-            img: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" 
-        },
-        { 
-            nombre: "Cuadros Decorativos Abstractos (Canvas)", 
-            precio: "S/. 15.00", 
-            moq: "Pedido mín: 20 und.", 
-            img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&q=80" 
+            img: "https://picsum.photos/id/1062/400/300" 
         }
     ],
     organizadores: [
         { 
-            nombre: "Cajas Organizadoras de Tela Plegables", 
-            precio: "S/. 12.00", 
-            moq: "Pedido mín: 30 und.", 
-            img: "https://images.unsplash.com/photo-1595341595378-fc02e1b12b2a?w=400&q=80" 
+            nombre: "Organizador Giratorio para Condimentos (360°)", 
+            precio: "S/. 14.50", 
+            moq: "Pedido mín: 20 und.", 
+            img: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=400&q=80" 
         },
         { 
-            nombre: "Organizador de Maquillaje Acrílico Rotativo", 
-            precio: "S/. 18.50", 
-            moq: "Pedido mín: 12 und.", 
-            img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&q=80" 
+            nombre: "Organizador Ajustable para Lavaplatos y Fregadero", 
+            precio: "S/. 9.80", 
+            moq: "Pedido mín: 30 und.", 
+            img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" 
         }
     ],
     almacenamiento: [
         { 
-            nombre: "Estantes Modulares de Metal y Madera", 
-            precio: "S/. 85.00", 
-            moq: "Pedido mín: 5 und.", 
-            img: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=400&q=80" 
+            nombre: "Cajones de Plástico Organizadores para Cocina (4 Niveles)", 
+            precio: "S/. 42.00", 
+            moq: "Pedido mín: 8 und.", 
+            img: "https://images.unsplash.com/photo-1595341595378-fc02e1b12b2a?w=400&q=80" 
         },
         { 
-            nombre: "Contenedores Plásticos Herméticos Multiusos", 
-            precio: "S/. 9.50", 
-            moq: "Pedido mín: 50 und.", 
+            nombre: "Contenedores Herméticos para Alimentos Secos x6", 
+            precio: "S/. 24.50", 
+            moq: "Pedido mín: 12 sets", 
             img: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=400&q=80" 
         }
     ],
@@ -73,13 +67,13 @@ const productosPorCategoria = {
             nombre: "Lámpara de Escritorio LED Inteligente", 
             precio: "S/. 26.00", 
             moq: "Pedido mín: 20 und.", 
-            img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" 
+            img: "https://picsum.photos/id/201/400/300" 
         },
         { 
             nombre: "Set de Utensilios de Cocina de Bambú x5", 
             precio: "S/. 14.00", 
             moq: "Pedido mín: 25 sets", 
-            img: "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?w=400&q=80" 
+            img: "https://picsum.photos/id/292/400/300" 
         }
     ]
 };
@@ -103,7 +97,7 @@ function abrirModal(categoria) {
     if (productosPorCategoria[categoria] && contenedor) {
         productosPorCategoria[categoria].forEach(prod => {
             const mensajeWhatsApp = `Hola Coneximport, estoy interesado en importar el producto B2B: "${prod.nombre}". Deseo más información sobre precios por mayor y plazos de entrega de logística.`;
-            const urlWhatsApp = `https://wa.me/51999999999?text=${encodeURIComponent(mensajeWhatsApp)}`; 
+            const urlWhatsApp = `https://wa.me/51972185119?text=${encodeURIComponent(mensajeWhatsApp)}`;
 
             const tarjetaHtml = `
                 <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 15px; text-align: center; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
