@@ -31,19 +31,19 @@ decoracion: [
             nombre: "Set x3 Macetas de Cerámica Nórdica", 
             precio: "S/. 22.50", 
             moq: "Pedido mín: 15 sets", 
-            img: "https://picsum.photos/id/1062/400/300" 
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzYhDhUb8tQo9wT4LkfDdzU7-9pCm8NIVCv2arIF_oxYGUaT8seHbfyqYT&s=10" 
         },
         { 
             nombre: "Cuadros Decorativos Abstractos (Canvas)", 
             precio: "S/. 15.00", 
             moq: "Pedido mín: 20 und.", 
-            img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&q=80" 
+            img: "https://resources.sears.com.mx/medios-plazavip/s2/16564/5258255/65c7a8fb78a68-d_892208-mlm49232295502_022022-o-9474d19f415a96d48b17050945620135-1024-1024-1600x1600.jpg?scale=500&qlty=75" 
         },
         { 
             nombre: "Lámpara de Mesa Vintage Industrial", 
             precio: "S/. 29.90", 
             moq: "Pedido mín: 12 und.", 
-            img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" 
+            img: "https://m.media-amazon.com/images/I/61D46HLrW0L.jpg" 
         }
     ],
     organizadores: [
@@ -51,13 +51,13 @@ decoracion: [
             nombre: "Organizador Giratorio para Condimentos (360°)", 
             precio: "S/. 14.50", 
             moq: "Pedido mín: 20 und.", 
-            img: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=400&q=80" 
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Q52yclA0Ayeuf9woUARKRMr1ksK9U2CuucqwHAuU2eSUqx7tZxS7gwu0&s=10" 
         },
         { 
             nombre: "Organizador Ajustable para Lavaplatos y Fregadero", 
             precio: "S/. 9.80", 
             moq: "Pedido mín: 30 und.", 
-            img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" 
+            img: "https://m.media-amazon.com/images/I/81g7UfBCYlL._AC_UF350,350_QL50_.jpg" 
         }
     ],
     almacenamiento: [
