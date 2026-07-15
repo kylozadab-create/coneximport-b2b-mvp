@@ -146,13 +146,13 @@ decoracion: [
             precio: "S/. 13.50", 
             moq: "Pedido mín: 40 und.", 
             img: "https://media.falabella.com/falabellaPE/144645357_01/w=1200,h=1200,fit=pad" 
-        }
+        },
         { 
             nombre: "Set de Posavasos Redondos de Silicona x6",
             precio: "S/. 7.20",
             moq: "Pedido mín: 50 sets",
             img: "https://http2.mlstatic.com/D_NQ_NP_883872-MPE113014846849_062026-O.webp" 
-        },
+        }
     ]
 };
 
