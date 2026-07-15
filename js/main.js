@@ -101,27 +101,27 @@ decoracion: [
             nombre: "Cajones de Plástico Organizadores para Cocina (4 Niveles)", 
             precio: "S/. 42.00", 
             moq: "Pedido mín: 8 und.", 
-            img: "https://images.unsplash.com/photo-1595341595378-fc02e1b12b2a?w=400&q=80" 
+            img: "https://oechsle.vteximg.com.br/arquivos/ids/19658431-1000-1000/imageUrl_1.jpg?v=638669948656330000" 
         },
         { 
             nombre: "Contenedores Herméticos para Alimentos Secos x6", 
             precio: "S/. 24.50", 
             moq: "Pedido mín: 12 sets", 
-            img: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=400&q=80" 
+            img: "https://plazavea.vteximg.com.br/arquivos/ids/33970575-1000-1000/imageUrl_1.jpg?v=639078877919570000" 
         }
     ],
     accesorios: [
         { 
-            nombre: "Lámpara de Escritorio LED Inteligente", 
-            precio: "S/. 26.00", 
-            moq: "Pedido mín: 20 und.", 
-            img: "https://picsum.photos/id/201/400/300" 
+            nombre: "Balanza Digital de Cocina con Superficie de Vidrio",
+            precio: "S/. 12.50",
+            moq: "Pedido mín: 30 und.",
+            img: "https://media.falabella.com/falabellaPE/883331058_005/w=1200,h=1200,fit=pad" 
         },
         { 
-            nombre: "Set de Utensilios de Cocina de Bambú x5", 
-            precio: "S/. 14.00", 
-            moq: "Pedido mín: 25 sets", 
-            img: "https://picsum.photos/id/292/400/300" 
+            nombre: "Set de Posavasos Redondos de Silicona x6",
+            precio: "S/. 7.20",
+            moq: "Pedido mín: 50 sets",
+            img: "https://http2.mlstatic.com/D_NQ_NP_883872-MPE113014846849_062026-O.webp" 
         }
     ]
 };
