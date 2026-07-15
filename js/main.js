@@ -40,6 +40,12 @@ decoracion: [
             img: "https://apreciart.pe/media/catalog/product/cache/90a84030f7f1bea1e77702997f508b79/s/o/cuadros-abstractos-formas-organicas-set-de-3.jpg" 
         },
         { 
+            nombre: "Tapiz de Pared", 
+            precio: "S/. 28.50",
+            moq: "Pedido mín: 15 und.",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqhJkeuLK8v0HV14WBbdemwtTKTboOkq2CiWcf3gXqnoUylSoC-31RVMs&s=10" 
+        },
+        { 
             nombre: "Lámpara de Mesa Vintage Industrial", 
             precio: "S/. 29.90",
             moq: "Pedido mín: 12 und.",
@@ -117,6 +123,18 @@ decoracion: [
             moq: "Pedido mín: 30 und.",
             img: "https://media.falabella.com/falabellaPE/883331058_005/w=1200,h=1200,fit=pad" 
         },
+        { 
+            nombre: "Humidificador Difusor Ultrasónico Madera LED", 
+            precio: "S/. 22.90", 
+            moq: "Pedido mín: 20 und.", 
+            img: "https://plazavea.vteximg.com.br/arquivos/ids/27583427-1000-1000/null.jpg" 
+        },
+        { 
+            nombre: "Termo Inteligente con Pantalla Digital de Temperatura 500ml", 
+            precio: "S/. 13.50", 
+            moq: "Pedido mín: 40 und.", 
+            img: "https://media.falabella.com/falabellaPE/144645357_01/w=1200,h=1200,fit=pad" 
+        }
         { 
             nombre: "Set de Posavasos Redondos de Silicona x6",
             precio: "S/. 7.20",
