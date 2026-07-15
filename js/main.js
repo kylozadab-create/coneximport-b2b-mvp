@@ -152,7 +152,7 @@ decoracion: [
             precio: "S/. 7.20",
             moq: "Pedido mín: 50 sets",
             img: "https://http2.mlstatic.com/D_NQ_NP_883872-MPE113014846849_062026-O.webp" 
-        }
+        },
     ]
 };
 
