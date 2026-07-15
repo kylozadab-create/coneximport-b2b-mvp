@@ -29,21 +29,33 @@ decoracion: [
         },
         { 
             nombre: "Set x3 Macetas de Cerámica Nórdica", 
-            precio: "S/. 22.50", 
+            precio: "S/. 19.90", 
             moq: "Pedido mín: 15 sets", 
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzYhDhUb8tQo9wT4LkfDdzU7-9pCm8NIVCv2arIF_oxYGUaT8seHbfyqYT&s=10" 
+            img: "https://media.falabella.com/falabellaPE/152777502_01/w=1200,h=1200,fit=pad" 
         },
         { 
             nombre: "Cuadros Decorativos Abstractos (Canvas)", 
-            precio: "S/. 15.00", 
-            moq: "Pedido mín: 20 und.", 
-            img: "https://resources.sears.com.mx/medios-plazavip/s2/16564/5258255/65c7a8fb78a68-d_892208-mlm49232295502_022022-o-9474d19f415a96d48b17050945620135-1024-1024-1600x1600.jpg?scale=500&qlty=75" 
+            precio: "S/. 55.00", 
+            moq: "Pedido mín: 20 und.",
+            img: "https://apreciart.pe/media/catalog/product/cache/90a84030f7f1bea1e77702997f508b79/s/o/cuadros-abstractos-formas-organicas-set-de-3.jpg" 
         },
         { 
             nombre: "Lámpara de Mesa Vintage Industrial", 
-            precio: "S/. 29.90", 
-            moq: "Pedido mín: 12 und.", 
-            img: "https://m.media-amazon.com/images/I/61D46HLrW0L.jpg" 
+            precio: "S/. 39.90",
+            moq: "Pedido mín: 12 und.",
+            img: "https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2030351225058/full_image-2030351225058.webp"
+        },
+        { 
+            nombre: "Florero de Vidrio Estilo Burbuja Japandi",
+            precio: "S/. 16.80",
+            moq: "Pedido mín: 24 und.",
+            img: "https://media.falabella.com/falabellaPE/155643318_01/w=1200,h=1200,fit=pad" 
+        },
+        { 
+            nombre: "Cojines Decorativos de Felpa Ultra Suave (Set x2)",
+            precio: "S/. 25.50",
+            moq: "Pedido mín: 20 sets",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHfeei9H4zoj90aBmz0GR_7skH9oTv5Q0FfxPfhXg1dqmWpKF8lp9Pc3s&s=10"
         }
     ],
     organizadores: [
