@@ -110,6 +110,18 @@ decoracion: [
             img: "https://oechsle.vteximg.com.br/arquivos/ids/19658431-1000-1000/imageUrl_1.jpg?v=638669948656330000" 
         },
         { 
+            nombre: "Cestas Organizadoras de Tela Plegables (Set x3)",
+            precio: "S/. 21.00",
+            moq: "Pedido mín: 20 sets",
+            img: "https://plazavea.vteximg.com.br/arquivos/ids/31339602-1000-1000/imageUrl_1.jpg?v=638829740278900000"
+        },
+        { 
+            nombre: "Bolsas de Almacenamiento Compresoras al Vacío (Set x10)", 
+            precio: "S/. 15.50", 
+            moq: "Pedido mín: 30 sets", 
+            img: "https://plazavea.vteximg.com.br/arquivos/ids/33342799-465-465/imageUrl_1.jpg" 
+        },
+        { 
             nombre: "Contenedores Herméticos para Alimentos Secos x6", 
             precio: "S/. 24.50", 
             moq: "Pedido mín: 12 sets", 
