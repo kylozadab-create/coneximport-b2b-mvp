@@ -29,19 +29,19 @@ decoracion: [
         },
         { 
             nombre: "Set x3 Macetas de Cerámica Nórdica", 
-            precio: "S/. 19.90", 
+            precio: "S/. 22.50", 
             moq: "Pedido mín: 15 sets", 
             img: "https://media.falabella.com/falabellaPE/152777502_01/w=1200,h=1200,fit=pad" 
         },
         { 
             nombre: "Cuadros Decorativos Abstractos (Canvas)", 
-            precio: "S/. 55.00", 
+            precio: "S/. 15.00", 
             moq: "Pedido mín: 20 und.",
             img: "https://apreciart.pe/media/catalog/product/cache/90a84030f7f1bea1e77702997f508b79/s/o/cuadros-abstractos-formas-organicas-set-de-3.jpg" 
         },
         { 
             nombre: "Lámpara de Mesa Vintage Industrial", 
-            precio: "S/. 39.90",
+            precio: "S/. 29.90",
             moq: "Pedido mín: 12 und.",
             img: "https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2030351225058/full_image-2030351225058.webp"
         },
@@ -53,7 +53,7 @@ decoracion: [
         },
         { 
             nombre: "Cojines Decorativos de Felpa Ultra Suave (Set x2)",
-            precio: "S/. 25.50",
+            precio: "S/. 19.50",
             moq: "Pedido mín: 20 sets",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHfeei9H4zoj90aBmz0GR_7skH9oTv5Q0FfxPfhXg1dqmWpKF8lp9Pc3s&s=10"
         }
@@ -63,13 +63,37 @@ decoracion: [
             nombre: "Organizador Giratorio para Condimentos (360°)", 
             precio: "S/. 14.50", 
             moq: "Pedido mín: 20 und.", 
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Q52yclA0Ayeuf9woUARKRMr1ksK9U2CuucqwHAuU2eSUqx7tZxS7gwu0&s=10" 
+            img: "https://s.alicdn.com/@sc04/kf/H06768da0a7d8416bbddec964b740d7d0R.jpg_300x300.jpg" 
         },
         { 
             nombre: "Organizador Ajustable para Lavaplatos y Fregadero", 
-            precio: "S/. 9.80", 
-            moq: "Pedido mín: 30 und.", 
-            img: "https://m.media-amazon.com/images/I/81g7UfBCYlL._AC_UF350,350_QL50_.jpg" 
+            precio: "S/. 9.80",
+            moq: "Pedido mín: 30 und.",
+            img: "https://img-1.kwcdn.com/product/fancy/1f9ea46d-b832-418a-a463-ab4270bf67b7.jpg?imageView2/2/w/800/q/70/format/avif"
+        },
+        { 
+            nombre: "Organizador de Acrílico para Maquillaje y Joyas",
+            precio: "S/. 18.50",
+            moq: "Pedido mín: 15 und.",
+            img: "https://img-1.kwcdn.com/product/fancy/c446cfe9-6de8-4dcc-9b02-3838e58208b3.jpg?imageView2/2/w/800/q/70/format/avif"
+        },
+        { 
+            nombre: "Estante Organizador Modular Metálico para Microondas", 
+            precio: "S/. 32.00",
+            moq: "Pedido mín: 10 und.",
+            img: "https://media.falabella.com/falabellaPE/155434283_01/w=1200,h=1200,fit=pad"
+        },
+        { 
+            nombre: "Organizador de Zapatos Apilable Transparente (x6 Módulos)",
+            precio: "S/. 26.50",
+            moq: "Pedido mín: 12 sets",
+            img: "https://oechsle.vteximg.com.br/arquivos/ids/22363265-1000-1000/imageUrl_1.jpg?v=638948110965200000"
+        },
+        { 
+            nombre: "Perchero Multifuncional para Ropa y Calzado",
+            precio: "S/. 36.90",
+            moq: "Pedido mín: 10 und.",
+            img: "https://oechsle.vteximg.com.br/arquivos/ids/23114208-1000-1000/Zapatera--con-Perchero-4-Niveles---organizador--de-Cartera-Sombrero-Abrigo.jpg?v=638990797334700000" 
         }
     ],
     almacenamiento: [
