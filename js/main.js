@@ -25,7 +25,7 @@ decoracion: [
             nombre: "Espejo Minimalista con Marco de Madera", 
             precio: "S/. 38.00", 
             moq: "Pedido mín: 10 und.", 
-            img: "https://picsum.photos/id/20/400/300" 
+            img: "https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2030216713447/full_image-2030216713447" 
         },
         { 
             nombre: "Set x3 Macetas de Cerámica Nórdica", 
