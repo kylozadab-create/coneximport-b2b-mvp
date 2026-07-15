@@ -200,7 +200,6 @@ function cerrarModal() {
     const modal = document.getElementById("modal-productos");
     if (modal) modal.style.display = "none";
 }
-
 // ===== Menú Móvil Toggle =====
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
